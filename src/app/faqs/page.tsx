@@ -28,7 +28,7 @@ export default function FAQsPage() {
     {
       question: `How can I get started with my flooring project?`,
       answer: `Contact ${businessConfig.brand.name} at ${businessConfig.contact.phone.display} for your free consultation and estimate. We'll measure, plan the layout and materials, then provide a clear scope and timeline for your project.`,
-      fullAnswer: `Contact ${businessConfig.brand.name} at ${businessConfig.contact.phone.display} for your free consultation and estimate. We'll measure, plan the layout and materials, then provide a clear scope and timeline for your project. Our process starts with understanding your vision and ends with a beautifully finished space.`
+                             fullAnswer: `Contact ${businessConfig.brand.name} at ${businessConfig.contact.phone.display} for your free consultation and estimate. We&apos;ll measure, plan the layout and materials, then provide a clear scope and timeline for your project. Our process starts with understanding your vision and ends with a beautifully finished space.`
     }
   ];
 
@@ -76,7 +76,7 @@ export default function FAQsPage() {
                 Ready to Get Started?
               </h2>
               <p className="text-xl text-gray-700 max-w-2xl mx-auto">
-                Contact us today for your free consultation and estimate. Let's bring your flooring vision to life.
+                Contact us today for your free consultation and estimate. Let&apos;s bring your flooring vision to life.
               </p>
             </div>
             
