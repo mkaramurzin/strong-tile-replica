@@ -1,5 +1,6 @@
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import { businessConfig } from '../../config/business';
 
 export default function ContactPage() {
   return (
@@ -12,7 +13,7 @@ export default function ContactPage() {
         <section className="bg-gray-50 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Contact Strong Tile LLC
+              Contact {businessConfig.brand.name}
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
               Get your free estimate today by contacting us directly or filling out our form below
@@ -40,38 +41,44 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900 mb-2">Call Us</h3>
                       <a 
-                        href="tel:253-249-8524" 
+                        href={`tel:${businessConfig.contact.phone.href}`} 
                         className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
                       >
-                        (253) 249-8524
+                        {businessConfig.contact.phone.display}
                       </a>
                     </div>
                   </div>
 
-                  {/* Email */}
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0">
-                      <svg className="w-6 h-6 text-gray-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
+                  {/* Email - Conditionally rendered */}
+                  {businessConfig.features.showEmailCTA && businessConfig.contact.email.primary && (
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0">
+                        <svg className="w-6 h-6 text-gray-500 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div className="ml-4">
+                        <h3 className="text-lg font-medium text-gray-900 mb-2">Email Us</h3>
+                        <a 
+                          href={`mailto:${businessConfig.contact.email.primary}`} 
+                          className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
+                        >
+                          {businessConfig.contact.email.primary}
+                        </a>
+                        {businessConfig.contact.email.secondary && (
+                          <>
+                            <br />
+                            <a 
+                              href={`mailto:${businessConfig.contact.email.secondary}`} 
+                              className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
+                            >
+                              {businessConfig.contact.email.secondary}
+                            </a>
+                          </>
+                        )}
+                      </div>
                     </div>
-                    <div className="ml-4">
-                      <h3 className="text-lg font-medium text-gray-900 mb-2">Email Us</h3>
-                      <a 
-                        href="mailto:strongtile05@yahoo.com" 
-                        className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
-                      >
-                        strongtile05@yahoo.com
-                      </a>
-                      <br />
-                      <a 
-                        href="mailto:info@strongtilenw.com" 
-                        className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
-                      >
-                        info@strongtilenw.com
-                      </a>
-                    </div>
-                  </div>
+                  )}
 
                   {/* Address */}
                   <div className="flex items-start">
@@ -84,9 +91,9 @@ export default function ContactPage() {
                     <div className="ml-4">
                       <h3 className="text-lg font-medium text-gray-900 mb-2">Visit Us</h3>
                       <address className="text-gray-700 text-lg not-italic leading-relaxed">
-                        3937 SW 328th Pl<br />
-                        Federal Way, WA 98023<br />
-                        United States
+                        {businessConfig.location.address.street}<br />
+                        {businessConfig.location.address.city}, {businessConfig.location.address.state} {businessConfig.location.address.zipCode}<br />
+                        {businessConfig.location.address.country}
                       </address>
                     </div>
                   </div>
@@ -210,7 +217,8 @@ export default function ContactPage() {
           </div>
         </section>
 
-        {/* Reviews Section */}
+        {/* Reviews Section - Conditionally rendered */}
+        {businessConfig.features.showTestimonials && (
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
@@ -283,14 +291,15 @@ export default function ContactPage() {
             <div className="text-center mt-8">
               <p className="text-gray-600">
                 For additional questions, you can call us at{' '}
-                <a href="tel:253-249-8524" className="text-blue-600 hover:text-blue-800 font-medium">
-                  253-249-8524
+                <a href={`tel:${businessConfig.contact.phone.href}`} className="text-blue-600 hover:text-blue-800 font-medium">
+                  {businessConfig.contact.phone.display}
                 </a>{' '}
                 or check our reviews on Google.
               </p>
             </div>
           </div>
         </section>
+        )}
       </main>
       
       <Footer />

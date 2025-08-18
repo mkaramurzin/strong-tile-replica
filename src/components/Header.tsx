@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { businessConfig } from '../config/business';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Header() {
             <Link href="/" className="flex items-center" onClick={closeMenu}>
               <div className="text-2xl font-bold text-gray-800">
                 <span className="inline-block w-8 h-8 bg-gray-800 mr-2 transform rotate-45"></span>
-                Strong Tile
+                {businessConfig.brand.name}
               </div>
             </Link>
           </div>
@@ -39,11 +40,11 @@ export default function Header() {
             <Link href="/about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
               ABOUT
             </Link>
+            <Link href="/portfolio" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
+              PORTFOLIO
+            </Link>
             <Link href="/faqs" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
               FAQS
-            </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
-              BLOG
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-gray-900 font-medium transition-colors">
               CONTACT
@@ -102,18 +103,18 @@ export default function Header() {
                 ABOUT
               </Link>
               <Link 
+                href="/portfolio" 
+                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium transition-colors"
+                onClick={closeMenu}
+              >
+                PORTFOLIO
+              </Link>
+              <Link 
                 href="/faqs" 
                 className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium transition-colors"
                 onClick={closeMenu}
               >
                 FAQS
-              </Link>
-              <Link 
-                href="/blog" 
-                className="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-50 font-medium transition-colors"
-                onClick={closeMenu}
-              >
-                BLOG
               </Link>
               <Link 
                 href="/contact" 

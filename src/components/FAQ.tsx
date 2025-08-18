@@ -1,26 +1,31 @@
 'use client';
 
 import { useState } from 'react';
+import { businessConfig } from '../config/business';
 
 export default function FAQ() {
   const [openFAQ, setOpenFAQ] = useState<number | null>(0); // First FAQ open by default
 
   const faqs = [
     {
-      question: "How should one compare flooring estimates for premiere floors in Federal Way, WA?",
-      answer: "Compare estimates based on material quality, labor costs, project timelines, and reviews of the contractor's previous work."
+      question: `What makes your tile installations different from other contractors in ${businessConfig.location.fullLocation}?`,
+      answer: "We focus on perfect precision — clean lines, level planes, and tight grout joints. Plus, we maintain organized job sites with surface protection and daily cleanup, showing respect for your home throughout the project."
     },
     {
-      question: "How does Strong Tile LLC guide customers from start to finish of a flooring project?",
-      answer: "Strong Tile LLC offers personalized consultations, expert recommendations, precise installation, and ongoing support throughout the project."
+      question: `How does ${businessConfig.brand.name} ensure project quality and timeline?`,
+      answer: `We stand by our word with clear scope definition, realistic scheduling, and consistent follow-through. Our 3-step process includes thorough planning, proper prep work, and precision installation with final cleanup.`
     },
     {
-      question: "What services does Strong Tile LLC's flooring installations offer?",
-      answer: "Our services include tile installation, flooring repairs, custom design solutions, and both residential and commercial flooring projects."
+      question: `What types of flooring and tile projects do you handle?`,
+      answer: "We specialize in tile installation (showers, backsplashes, large-format floors), tile repair (cracked tiles, regrout, resealing), and flooring installation (LVP, LVT, engineered wood, laminate) with proper subfloor prep and transitions."
     },
     {
-      question: "How can I get started on my free estimate with flooring contractors in Federal Way, WA?",
-      answer: "Contact Strong Tile LLC at 253-249-8524 or visit our website to schedule your consultation and free estimate."
+      question: `Do you work on commercial projects as well as residential?`,
+      answer: `Yes! We're residential specialists now expanding into commercial projects across the Northwest. Whether it's a home bathroom or a commercial space, we bring the same precision and organization to every job.`
+    },
+    {
+      question: `How can I get started with my flooring project?`,
+      answer: `Contact ${businessConfig.brand.name} at ${businessConfig.contact.phone.display} for your free consultation and estimate. We'll measure, plan the layout and materials, then provide a clear scope and timeline for your project.`
     }
   ];
 
@@ -84,7 +89,7 @@ export default function FAQ() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Our Location</h3>
                 <p className="text-gray-700">
-                  Strong Tile LLC is located at <strong>3937 SW 328th Pl, Federal Way, WA, 98023</strong>.
+                  {businessConfig.brand.name} is located at <strong>{businessConfig.location.address.full}</strong>.
                 </p>
               </div>
 
@@ -103,7 +108,7 @@ export default function FAQ() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Business Hours</h3>
                 <p className="text-gray-700">
-                  We are open <strong>Monday to Friday from 08:00 am to 05:00 pm</strong>.
+                  We are open <strong>{businessConfig.contact.businessHours.weekdays}</strong>.
                 </p>
               </div>
 
@@ -112,21 +117,9 @@ export default function FAQ() {
                 <div className="space-y-2 text-gray-700">
                   <p>
                     For additional questions, you can call us at{' '}
-                    <a href="tel:253-249-8524" className="text-blue-600 hover:text-blue-800 font-semibold">
-                      253-249-8524
+                    <a href={`tel:${businessConfig.contact.phone.href}`} className="text-blue-600 hover:text-blue-800 font-semibold">
+                      {businessConfig.contact.phone.display}
                     </a>
-                  </p>
-                  <p>
-                    or check our{' '}
-                    <a 
-                      href="https://www.google.com/search?q=Strong+Tile+LLC+reviews" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 font-semibold"
-                    >
-                      reviews on Google
-                    </a>
-                    .
                   </p>
                 </div>
               </div>
@@ -136,7 +129,7 @@ export default function FAQ() {
 
         {/* Map Section */}
         <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Find Us in Federal Way, WA</h3>
+          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Find Us in {businessConfig.location.fullLocation}</h3>
           <div className="relative h-96 bg-gray-200 rounded-lg overflow-hidden">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.123!2d-122.312!3d47.308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDE4JzI5LjAiTiAxMjLCsDE4JzQzLjAiVw!5e0!3m2!1sen!2sus!4v1000000000000!5m2!1sen!2sus"
@@ -146,7 +139,7 @@ export default function FAQ() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Strong Tile LLC Location - Federal Way, WA"
+              title={`${businessConfig.brand.name} Location - ${businessConfig.location.fullLocation}`}
               className="rounded-lg"
             />
           </div>

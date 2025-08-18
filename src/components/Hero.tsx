@@ -1,6 +1,9 @@
 import Link from 'next/link';
+import { businessConfig } from '../config/business';
 
 export default function Hero() {
+  const telHref = (phone: string) => `tel:${phone}`;
+
   return (
     <section className="relative h-screen flex items-center justify-center">
       {/* Background Image */}
@@ -14,31 +17,47 @@ export default function Hero() {
       {/* Content Overlay */}
       <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Trusted Flooring Company in<br />
-          Federal Way, WA
+          {businessConfig.content.hero.title}
         </h1>
         
-        <h2 className="text-xl md:text-2xl mb-8 font-light">
-          Flooring Installation Contractors near me in<br />
-          Federal Way
-        </h2>
-        
         <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-          We offer a variety of tile installation and remodeling services to enhance the design of your home
+          {businessConfig.content.hero.subtitle}
         </p>
         
-        <Link 
-          href="/estimate" 
-          className="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
-        >
-          FREE ESTIMATE →
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
+          <Link 
+            href="#estimate" 
+            className="inline-flex items-center bg-white text-black px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-all duration-300"
+          >
+            Get a Free Estimate
+          </Link>
+          <a 
+            href={telHref(businessConfig.contact.phone.href)}
+            className="inline-flex items-center bg-transparent border-2 border-white text-white px-8 py-4 text-lg font-medium hover:bg-white hover:text-black transition-all duration-300"
+          >
+            Call {businessConfig.contact.phone.display}
+          </a>
+        </div>
+
+        {/* Credibility Chips - Fixed for readability */}
+        <ul className="flex flex-wrap justify-center gap-3 text-sm">
+          {businessConfig.content.credibilityChips.map((chip, index) => (
+            <li key={index} className="bg-white text-gray-900 px-4 py-2 rounded-full font-medium shadow-lg">
+              {chip}
+            </li>
+          ))}
+        </ul>
       </div>
       
       {/* Experience Badge */}
       <div className="absolute bottom-20 left-8 bg-white text-black p-6 rounded-lg shadow-lg hidden md:block">
-        <div className="text-3xl font-bold">20</div>
+        <div className="text-3xl font-bold">{businessConfig.brand.yearsInBusiness}</div>
         <div className="text-sm">years</div>
+      </div>
+
+      {/* Commercial Badge */}
+      <div className="absolute top-8 right-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg hidden md:block">
+        {businessConfig.content.commercial.badge}
       </div>
     </section>
   );

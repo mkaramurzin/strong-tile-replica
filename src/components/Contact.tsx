@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { businessConfig } from '../config/business';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -43,23 +44,25 @@ export default function Contact() {
             </p>
 
             <div className="space-y-6">
-              {/* Email Us */}
-              <div className="flex items-start">
-                <div className="flex-shrink-0 mt-1">
-                  <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+              {/* Email Us - Conditionally rendered */}
+              {businessConfig.features.showEmailCTA && businessConfig.contact.email.primary && (
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="ml-4">
+                    <h3 className="text-lg font-semibold text-gray-900 mb-1">Email Us</h3>
+                    <a 
+                      href={`mailto:${businessConfig.contact.email.primary}`} 
+                      className="text-gray-700 hover:text-blue-600 transition-colors"
+                    >
+                      {businessConfig.contact.email.primary}
+                    </a>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">Email Us</h3>
-                  <a 
-                    href="mailto:strongtile05@yahoo.com" 
-                    className="text-gray-700 hover:text-blue-600 transition-colors"
-                  >
-                    strongtile05@yahoo.com
-                  </a>
-                </div>
-              </div>
+              )}
 
               {/* Call Us */}
               <div className="flex items-start">
@@ -71,10 +74,10 @@ export default function Contact() {
                 <div className="ml-4">
                   <h3 className="text-lg font-semibold text-gray-900 mb-1">Call Us</h3>
                   <a 
-                    href="tel:253-249-8524" 
+                    href={`tel:${businessConfig.contact.phone.href}`} 
                     className="text-gray-700 hover:text-blue-600 transition-colors"
                   >
-                    (253) 249-8524
+                    {businessConfig.contact.phone.display}
                   </a>
                 </div>
               </div>
@@ -82,12 +85,13 @@ export default function Contact() {
 
             {/* Additional Info */}
             <div className="mt-8 p-6 bg-white rounded-lg shadow-sm">
-              <h4 className="font-semibold text-gray-900 mb-2">Why Choose Strong Tile?</h4>
+              <h4 className="font-semibold text-gray-900 mb-2">Why Choose {businessConfig.brand.name}?</h4>
               <ul className="text-sm text-gray-700 space-y-1">
-                <li>• Free estimates and consultations</li>
-                <li>• 20+ years of experience</li>
-                <li>• Licensed and insured</li>
-                <li>• Satisfaction guaranteed</li>
+                {businessConfig.services.keyPoints.map((point, index) => (
+                  <li key={index}>• {point}</li>
+                ))}
+                <li>• {businessConfig.brand.yearsInBusiness}+ years in business</li>
+                <li>• {businessConfig.brand.jobs2025}+ jobs completed in 2025</li>
               </ul>
             </div>
           </div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { businessConfig } from '../config/business';
 
 export default function About() {
   return (
@@ -21,24 +22,26 @@ export default function About() {
           {/* Content */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
-              ABOUT STRONG TILE - YOUR FLOORING PARTNER
+              ABOUT {businessConfig.brand.name.toUpperCase()} - YOUR FLOORING PARTNER
             </h2>
             
             <div className="space-y-6 text-gray-700 text-lg leading-relaxed">
               <p>
-                Welcome to Strong Tile, your premier tile and remodeling contractor in the Pacific Northwest. 
-                With a passion for craftsmanship and a commitment to excellence, Strong Tile has been transforming 
-                homes and commercial spaces with stunning tile work and innovative remodeling solutions. Our skilled 
-                team specializes in custom tile installations, kitchen and bathroom remodels, and comprehensive 
-                renovation services.
+                {businessConfig.content.about.intro}
               </p>
               
               <p>
-                We take pride in our attention to detail, using only the highest quality materials to ensure lasting 
-                beauty and durability. At Strong Tile, we believe in turning your vision into reality, creating spaces 
-                that are not only functional but also inspiring. Let us bring your next project to life with our 
-                expertise, creativity, and dedication to superior service.
+                {businessConfig.content.about.story}
               </p>
+
+              {/* Owner Quotes */}
+              <div className="space-y-4 mt-8">
+                {businessConfig.content.ownerQuotes.map((quote, index) => (
+                  <blockquote key={index} className="italic text-gray-600 border-l-4 border-gray-300 pl-4">
+                    "{quote}"
+                  </blockquote>
+                ))}
+              </div>
             </div>
 
             <div className="mt-10">

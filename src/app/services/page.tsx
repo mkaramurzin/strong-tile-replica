@@ -2,6 +2,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import { businessConfig } from '../../config/business';
 
 export default function ServicesPage() {
   return (
@@ -17,7 +18,7 @@ export default function ServicesPage() {
               Our Flooring Services
             </h1>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              We offer a variety of tile installation and remodeling services to enhance the design of your home
+              {businessConfig.brand.tagline}
             </p>
           </div>
         </section>
@@ -36,16 +37,14 @@ export default function ServicesPage() {
                 >
                   LEARN MORE →
                 </Link>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Tile Installation
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {businessConfig.content.servicesContent.tileInstallation.title}
                 </h2>
+                <p className="text-lg text-gray-600 mb-6 font-medium">
+                  {businessConfig.content.servicesContent.tileInstallation.subtitle}
+                </p>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Looking for a reliable <strong>tile installation contractor</strong> or <strong>flooring contractor near me</strong>? 
-                  Enhance your home with our expert tile installation services. Our experienced team delivers{' '}
-                  <strong>exceptional quality and attention to detail</strong>, transforming bathrooms, kitchens, 
-                  and backsplashes with precision and style. From accurate measurements to flawless finishes, we 
-                  ensure a smooth, efficient installation process every time. Contact us today for your free estimate 
-                  and take the first step toward a beautifully tiled space!
+                  {businessConfig.content.servicesContent.tileInstallation.description}
                 </p>
               </div>
               {/* Image */}
@@ -68,7 +67,7 @@ export default function ServicesPage() {
                 <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1503387837-b154d5074bd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                    alt="Tile repair work in progress"
+                    alt="White subway tile wall installation"
                     fill
                     className="object-cover"
                   />
@@ -76,14 +75,14 @@ export default function ServicesPage() {
               </div>
               {/* Text Content */}
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Tile Repair
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {businessConfig.content.servicesContent.tileRepair.title}
                 </h2>
+                <p className="text-lg text-gray-600 mb-6 font-medium">
+                  {businessConfig.content.servicesContent.tileRepair.subtitle}
+                </p>
                 <p className="text-gray-700 text-lg leading-relaxed mb-8">
-                  Our skilled professionals at Strong Tile specialize in expert tile repair services to help 
-                  restore the beauty and functionality of your tiled surfaces. Whether you have cracked, chipped, 
-                  or loose tiles, we are here to provide high-quality repairs with precision and attention to detail. 
-                  Contact us today to schedule your tile repair service and bring new life to your space.
+                  {businessConfig.content.servicesContent.tileRepair.description}
                 </p>
                 <Link 
                   href="#" 
@@ -94,29 +93,28 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            {/* Service 3: Home Remodel */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Service 3: Flooring Installation */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20">
               {/* Text Content */}
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                  Home Remodel
-                </h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-8">
-                  At Strong Tile, we not only specialize in exceptional tile work but also offer a wide range 
-                  of home remodeling services. Our experienced team is dedicated to transforming your space into 
-                  the home of your dreams. From kitchen remodels to bathroom renovations, we pay attention to 
-                  every detail to ensure your project is completed to the highest standards. Let us bring your 
-                  vision to life with our professional home remodeling services.
-                </p>
+              <div className="order-2 lg:order-1">
                 <Link 
                   href="#" 
-                  className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors"
+                  className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium mb-6 transition-colors"
                 >
                   LEARN MORE →
                 </Link>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                  {businessConfig.content.servicesContent.flooringInstallation.title}
+                </h2>
+                <p className="text-lg text-gray-600 mb-6 font-medium">
+                  {businessConfig.content.servicesContent.flooringInstallation.subtitle}
+                </p>
+                <p className="text-gray-700 text-lg leading-relaxed">
+                  {businessConfig.content.servicesContent.flooringInstallation.description}
+                </p>
               </div>
               {/* Image */}
-              <div>
+              <div className="order-1 lg:order-2">
                 <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
                   <Image
                     src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
@@ -125,6 +123,28 @@ export default function ServicesPage() {
                     className="object-cover"
                   />
                 </div>
+              </div>
+            </div>
+
+            {/* 3-Step Process */}
+            <div className="bg-gray-50 rounded-lg p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 text-center mb-12">
+                Our Simple 3-Step Process
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {businessConfig.content.processSteps.map((step, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-16 h-16 bg-gray-900 text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6">
+                      {index + 1}
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-4">
+                      {step.title}
+                    </h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      {step.body}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -163,17 +183,25 @@ export default function ServicesPage() {
         <section className="py-16 bg-black text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Transform Your Space?
+              Ready to Start Your Project?
             </h2>
             <p className="text-xl mb-8 text-gray-300">
-              Contact us today for your free estimate and consultation
+              Contact us today for your free consultation and estimate
             </p>
-            <Link 
-              href="/contact" 
-              className="inline-block bg-white text-black px-8 py-3 rounded font-medium hover:bg-gray-100 transition-colors"
-            >
-              FREE ESTIMATE →
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact" 
+                className="inline-block bg-white text-black px-8 py-3 rounded font-medium hover:bg-gray-100 transition-colors"
+              >
+                GET FREE ESTIMATE
+              </Link>
+              <a 
+                href={`tel:${businessConfig.contact.phone.href}`}
+                className="inline-block border-2 border-white text-white px-8 py-3 rounded font-medium hover:bg-white hover:text-black transition-colors"
+              >
+                Call {businessConfig.contact.phone.display}
+              </a>
+            </div>
           </div>
         </section>
       </main>

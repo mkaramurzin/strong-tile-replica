@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { businessConfig } from '../config/business';
 
 export default function Footer() {
   return (
@@ -10,11 +11,11 @@ export default function Footer() {
             <Link href="/" className="flex items-center">
               <div className="text-2xl font-bold text-gray-800">
                 <span className="inline-block w-8 h-8 bg-gray-800 mr-2 transform rotate-45"></span>
-                Strong Tile
+                {businessConfig.brand.name}
               </div>
             </Link>
             <p className="text-gray-600 leading-relaxed">
-              We offer a variety of tile installation and remodeling services to enhance the design of your home.
+              {businessConfig.brand.tagline}
             </p>
           </div>
 
@@ -46,26 +47,28 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <address className="text-gray-600 not-italic leading-relaxed">
-                3937 SW 328th Pl, Federal Way,<br />
-                WA 98023, United States
+                {businessConfig.location.address.street}, {businessConfig.location.address.city},<br />
+                {businessConfig.location.address.state} {businessConfig.location.address.zipCode}, {businessConfig.location.address.country}
               </address>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center">
-                <svg className="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <div>
-                  <div className="text-sm font-medium text-gray-900 mb-1">Email Us</div>
-                  <a 
-                    href="mailto:info@strongtilenw.com" 
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                  >
-                    info@strongtilenw.com
-                  </a>
+              {businessConfig.features.showEmailCTA && businessConfig.contact.email.primary && (
+                <div className="flex items-center">
+                  <svg className="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <div>
+                    <div className="text-sm font-medium text-gray-900 mb-1">Email Us</div>
+                    <a 
+                      href={`mailto:${businessConfig.contact.email.primary}`} 
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      {businessConfig.contact.email.primary}
+                    </a>
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex items-center">
                 <svg className="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -74,10 +77,10 @@ export default function Footer() {
                 <div>
                   <div className="text-sm font-medium text-gray-900 mb-1">Call Us</div>
                   <a 
-                    href="tel:253-249-8524" 
+                    href={`tel:${businessConfig.contact.phone.href}`} 
                     className="text-gray-600 hover:text-blue-600 transition-colors"
                   >
-                    (253) 249-8524
+                    {businessConfig.contact.phone.display}
                   </a>
                 </div>
               </div>
@@ -88,7 +91,7 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="border-t border-gray-200 mt-8 pt-8">
           <p className="text-center text-gray-500 text-sm">
-            © 2024 strongtilenw – All Rights Reserved
+            © 2024 {businessConfig.brand.name.toLowerCase().replace(' ', '')} – All Rights Reserved
           </p>
         </div>
       </div>
