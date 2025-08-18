@@ -3,6 +3,30 @@ import Footer from '../../components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { businessConfig } from '../../config/business';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `Flooring Services in ${businessConfig.location.fullLocation} - Tile Installation & Repair`,
+  description: `Professional tile installation, tile repair, and flooring services in ${businessConfig.location.fullLocation}. ${businessConfig.brand.name} offers expert tile work, waterproofing, and flooring installation serving ${businessConfig.location.serviceAreas.join(", ")} with precision and organization.`,
+  keywords: [
+    'tile installation',
+    'tile repair',
+    'flooring installation',
+    'bathroom tile',
+    'kitchen backsplash',
+    'shower tile',
+    'LVP installation',
+    businessConfig.location.city + ' tile',
+    businessConfig.location.state + ' flooring',
+    'commercial flooring',
+    'waterproofing'
+  ],
+  openGraph: {
+    title: `Flooring Services in ${businessConfig.location.fullLocation} - Tile Installation & Repair`,
+    description: businessConfig.brand.tagline,
+    url: 'https://vantatileflooring.com/services',
+  },
+};
 
 export default function ServicesPage() {
   return (

@@ -4,6 +4,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { portfolioItems } from '../../data/portfolio';
 import { businessConfig } from '../../config/business';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `Portfolio - ${businessConfig.brand.name} Tile & Flooring Work in ${businessConfig.location.fullLocation}`,
+  description: `View our precision tile installation and flooring projects in ${businessConfig.location.fullLocation}. See completed bathroom renovations, kitchen backsplashes, and commercial flooring work by ${businessConfig.brand.name} serving ${businessConfig.location.serviceAreas.join(", ")}.`,
+  keywords: [
+    'tile portfolio',
+    'flooring gallery',
+    'bathroom renovation',
+    'kitchen backsplash',
+    'tile work examples',
+    'flooring projects',
+    businessConfig.location.city + ' tile work',
+    'Vancouver tile installation',
+    'commercial flooring portfolio'
+  ],
+  openGraph: {
+    title: `Portfolio - ${businessConfig.brand.name} Tile & Flooring Work in ${businessConfig.location.fullLocation}`,
+    description: `See our precision tile work and organized installations across ${businessConfig.location.serviceAreas.join(", ")} and surrounding areas.`,
+    url: 'https://vantatileflooring.com/portfolio',
+  },
+};
 
 export default function PortfolioPage() {
   return (

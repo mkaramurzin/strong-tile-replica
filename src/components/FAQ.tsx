@@ -126,34 +126,6 @@ export default function FAQ() {
             </div>
           </div>
         </div>
-
-        {/* Map Section */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-4 text-center">Find Us in {businessConfig.location.fullLocation}</h3>
-          <div className="relative h-96 bg-gray-200 rounded-lg overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2700.123!2d-122.312!3d47.308!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDE4JzI5LjAiTiAxMjLCsDE4JzQzLjAiVw!5e0!3m2!1sen!2sus!4v1000000000000!5m2!1sen!2sus"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title={`${businessConfig.brand.name} Location - ${businessConfig.location.fullLocation}`}
-              className="rounded-lg"
-            />
-          </div>
-          <div className="text-center mt-4">
-            <a
-              href="https://www.google.com/maps/dir//3937+SW+328th+Pl,+Federal+Way,+WA+98023"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center text-blue-600 hover:text-blue-800 font-semibold"
-            >
-              Get Directions →
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );

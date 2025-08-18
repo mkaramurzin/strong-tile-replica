@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { businessConfig } from '../config/business';
 
 export default function Footer() {
@@ -9,9 +10,18 @@ export default function Footer() {
           {/* Left Column - Logo and Description */}
           <div className="space-y-4">
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-gray-800">
-                <span className="inline-block w-8 h-8 bg-gray-800 mr-2 transform rotate-45"></span>
-                {businessConfig.brand.name}
+              <div className="flex items-center">
+                <div className="relative w-8 h-8 mr-3">
+                  <Image
+                    src="/vanta-logo.png"
+                    alt={`${businessConfig.brand.name} Logo`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-2xl font-bold text-gray-800">
+                  {businessConfig.brand.name}
+                </span>
               </div>
             </Link>
             <p className="text-gray-600 leading-relaxed">
@@ -26,13 +36,18 @@ export default function Footer() {
             </h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/areas" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Areas We Serve
+                <Link href="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Our Services
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
-                  Our Services
+                <Link href="/portfolio" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  Portfolio
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
+                  About Us
                 </Link>
               </li>
               <li>
@@ -91,7 +106,7 @@ export default function Footer() {
         {/* Copyright Section */}
         <div className="border-t border-gray-200 mt-8 pt-8">
           <p className="text-center text-gray-500 text-sm">
-            © 2024 {businessConfig.brand.name.toLowerCase().replace(' ', '')} – All Rights Reserved
+            © 2025 {businessConfig.brand.name} – All Rights Reserved
           </p>
         </div>
       </div>

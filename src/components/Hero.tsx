@@ -49,12 +49,6 @@ export default function Hero() {
         </ul>
       </div>
       
-      {/* Experience Badge */}
-      <div className="absolute bottom-20 left-8 bg-white text-black p-6 rounded-lg shadow-lg hidden md:block">
-        <div className="text-3xl font-bold">{businessConfig.brand.yearsInBusiness}</div>
-        <div className="text-sm">years</div>
-      </div>
-
       {/* Commercial Badge */}
       <div className="absolute top-8 right-8 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg hidden md:block">
         {businessConfig.content.commercial.badge}

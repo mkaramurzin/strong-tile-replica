@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { businessConfig } from '../config/business';
 
@@ -22,9 +23,18 @@ export default function Header() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center" onClick={closeMenu}>
-              <div className="text-2xl font-bold text-gray-800">
-                <span className="inline-block w-8 h-8 bg-gray-800 mr-2 transform rotate-45"></span>
-                {businessConfig.brand.name}
+              <div className="flex items-center">
+                <div className="relative w-8 h-8 mr-3">
+                  <Image
+                    src="/vanta-logo.png"
+                    alt={`${businessConfig.brand.name} Logo`}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-2xl font-bold text-gray-800">
+                  {businessConfig.brand.name}
+                </span>
               </div>
             </Link>
           </div>

@@ -3,6 +3,27 @@ import Footer from '../../components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { businessConfig } from '../../config/business';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `About ${businessConfig.brand.name} - Professional Flooring Company in ${businessConfig.location.fullLocation}`,
+  description: `Learn about ${businessConfig.brand.name}, your trusted tile and flooring contractor in ${businessConfig.location.fullLocation}. ${businessConfig.brand.yearsInBusiness}+ years of precision tile work and organized installations serving ${businessConfig.location.serviceAreas.join(", ")} and surrounding areas.`,
+  keywords: [
+    'about',
+    'flooring company',
+    'tile contractor',
+    businessConfig.location.city,
+    businessConfig.location.state,
+    'professional tile installation',
+    'Vancouver flooring',
+    'tile experts'
+  ],
+  openGraph: {
+    title: `About ${businessConfig.brand.name} - Professional Flooring Company in ${businessConfig.location.fullLocation}`,
+    description: businessConfig.content.about.intro,
+    url: 'https://vantatileflooring.com/about',
+  },
+};
 
 export default function AboutPage() {
   return (

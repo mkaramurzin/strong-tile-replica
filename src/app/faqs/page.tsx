@@ -2,6 +2,27 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Link from 'next/link';
 import { businessConfig } from '../../config/business';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: `FAQs - Flooring Questions Answered by ${businessConfig.brand.name} in ${businessConfig.location.fullLocation}`,
+  description: `Get answers to frequently asked questions about tile installation, flooring services, and project timelines from ${businessConfig.brand.name} in ${businessConfig.location.fullLocation}. Learn about our precision tile work, commercial expansion, and service areas including ${businessConfig.location.serviceAreas.join(", ")}.`,
+  keywords: [
+    'flooring FAQ',
+    'tile installation questions',
+    'flooring contractor FAQ',
+    businessConfig.location.city + ' tile FAQ',
+    'tile repair questions',
+    'flooring timeline',
+    'Vancouver tile contractor',
+    'commercial flooring questions'
+  ],
+  openGraph: {
+    title: `FAQs - Flooring Questions Answered by ${businessConfig.brand.name} in ${businessConfig.location.fullLocation}`,
+    description: `Get answers to the most frequently asked questions about our flooring services`,
+    url: 'https://vantatileflooring.com/faqs',
+  },
+};
 
 export default function FAQsPage() {
   const faqs = [
