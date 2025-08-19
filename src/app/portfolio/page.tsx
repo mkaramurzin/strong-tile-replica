@@ -1,6 +1,6 @@
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Image from 'next/image';
+import PortfolioImage from '../../components/PortfolioImage';
 import Link from 'next/link';
 import { portfolioItems } from '../../data/portfolio';
 import { businessConfig } from '../../config/business';
@@ -53,13 +53,12 @@ export default function PortfolioPage() {
               {portfolioItems.map((item) => (
                 <div key={item.id} className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden">
                   {/* Main Image */}
-                  <div className="relative h-64 w-full">
-                    <Image
+                  <div className="relative h-64 w-full bg-gray-100">
+                    <PortfolioImage
                       src={item.images[0].src}
                       alt={item.images[0].alt}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      width={item.images[0].width}
+                      height={item.images[0].height}
                     />
                   </div>
                   
@@ -110,7 +109,7 @@ export default function PortfolioPage() {
               ))}
               
               {/* Placeholder Cards for Future Projects */}
-              {[...Array(4)].map((_, index) => (
+              {[...Array(1)].map((_, index) => (
                 <div key={`placeholder-${index}`} className="bg-gray-50 rounded-lg shadow-sm border-2 border-dashed border-gray-200 flex items-center justify-center h-96">
                   <div className="text-center text-gray-400">
                     <svg className="w-12 h-12 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
