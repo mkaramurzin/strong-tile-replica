@@ -6,12 +6,24 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const { firstName, lastName, phone, email, message, service } = body;
 
-    // Basic validation
-    if (!firstName || !lastName || !phone || !email || !service) {
+    // Basic validation - only firstName, email, and service are required
+    if (!firstName || !email || !service) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required fields: firstName, email, and service' },
         { status: 400 }
       );
+    }
+
+    // Phone number validation if provided
+    if (phone && phone.trim()) {
+      const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+      const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+      if (!phoneRegex.test(cleanPhone)) {
+        return NextResponse.json(
+          { error: 'Invalid phone number format' },
+          { status: 400 }
+        );
+      }
     }
 
     // Check for API key
@@ -32,8 +44,8 @@ export async function POST(request: NextRequest) {
       subject: `New Contact Form Submission - ${service}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Name:</strong> ${firstName}${lastName ? ` ${lastName}` : ''}</p>
+        ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ''}
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Message:</strong></p>

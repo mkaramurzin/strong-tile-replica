@@ -23,10 +23,24 @@ export default function Contact() {
     }));
   };
 
+  const validatePhone = (phone: string): boolean => {
+    if (!phone.trim()) return true; // Optional field
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+    return phoneRegex.test(cleanPhone);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
+
+    // Validate phone number if provided
+    if (formData.phone && !validatePhone(formData.phone)) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -48,6 +62,8 @@ export default function Contact() {
           service: ''
         });
       } else {
+        const errorData = await response.json();
+        console.error('Form submission error:', errorData);
         setSubmitStatus('error');
       }
     } catch (error) {
@@ -155,7 +171,6 @@ export default function Contact() {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    required
                   />
                 </div>
               </div>
@@ -172,7 +187,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  required
+                  placeholder="(123) 456-7890"
                 />
               </div>
 
@@ -238,7 +253,7 @@ export default function Contact() {
               
               {submitStatus === 'error' && (
                 <div className="p-4 bg-red-50 border border-red-200 rounded-md">
-                  <p className="text-red-800 font-medium">Sorry, there was an error sending your message. Please try again or call us directly.</p>
+                  <p className="text-red-800 font-medium">Sorry, there was an error sending your message. Please check your phone number format and try again, or call us directly.</p>
                 </div>
               )}
 

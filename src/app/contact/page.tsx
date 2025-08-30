@@ -1,13 +1,15 @@
 'use client';
 
+import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { businessConfig } from '../../config/business';
 import { trackPhoneClick, trackEmailClick, trackFormSubmission } from '../../components/Analytics';
 
-
-
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
   const handlePhoneClick = () => {
     trackPhoneClick(businessConfig.contact.phone.display);
   };
@@ -16,16 +18,65 @@ export default function ContactPage() {
     trackEmailClick(email);
   };
 
-  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const validatePhone = (phone: string): boolean => {
+    if (!phone.trim()) return true; // Optional field
+    const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+    const cleanPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+    return phoneRegex.test(cleanPhone);
+  };
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
     const formData = new FormData(event.currentTarget);
     const serviceType = formData.get('service') as string;
+    const phoneValue = formData.get('phone') as string;
     
+    // Validate phone number if provided
+    if (phoneValue && !validatePhone(phoneValue)) {
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Track form submission for analytics
     trackFormSubmission('contact_form', serviceType);
-    
-    // Here you would typically send the form data to your backend
-    // For now, we'll just show an alert
-    alert('Thank you for your message! We will contact you soon.');
+
+    const formDataObj = {
+      firstName: formData.get('firstName') as string,
+      lastName: formData.get('lastName') as string,
+      phone: phoneValue,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
+      service: serviceType
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formDataObj),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form
+        event.currentTarget.reset();
+      } else {
+        const errorData = await response.json();
+        console.error('Form submission error:', errorData);
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -172,7 +223,6 @@ export default function ContactPage() {
                         id="lastName"
                         name="lastName"
                         className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                        required
                       />
                     </div>
                   </div>
@@ -186,7 +236,7 @@ export default function ContactPage() {
                       id="phone"
                       name="phone"
                       className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent"
-                      required
+                      placeholder="(123) 456-7890"
                     />
                   </div>
 
@@ -217,6 +267,7 @@ export default function ContactPage() {
                       <option value="tile-installation">Tile Installation</option>
                       <option value="tile-repair">Tile Repair</option>
                       <option value="home-remodel">Home Remodel</option>
+                      <option value="consultation">Free Consultation</option>
                     </select>
                   </div>
 
@@ -233,11 +284,25 @@ export default function ContactPage() {
                     ></textarea>
                   </div>
 
+                  {/* Status Messages */}
+                  {submitStatus === 'success' && (
+                    <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                      <p className="text-green-800 font-medium">Thank you for your message! We will contact you soon.</p>
+                    </div>
+                  )}
+                  
+                  {submitStatus === 'error' && (
+                    <div className="p-4 bg-red-50 border border-red-200 rounded-md">
+                      <p className="text-red-800 font-medium">Sorry, there was an error sending your message. Please check your phone number format and try again, or call us directly.</p>
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-black text-white px-8 py-3 rounded font-medium hover:bg-gray-800 transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full bg-black text-white px-8 py-3 rounded font-medium hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    {isSubmitting ? 'SENDING...' : 'Send Message'}
                   </button>
                 </form>
               </div>
