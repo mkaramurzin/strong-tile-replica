@@ -84,8 +84,8 @@ export default function Services() {
           <div>
             <div className="relative h-80 md:h-96 rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Modern kitchen remodel with white cabinets and pendant lights"
+                src="/gallery/ai/stair-landing-transition.jpg"
+                alt="Professional flooring installation with stair landing transition"
                 fill
                 className="object-cover"
               />

@@ -11,8 +11,8 @@ export default function About() {
           <div>
             <div className="relative h-96 md:h-[500px] rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                alt="Modern kitchen with white cabinets and marble countertops"
+                src="/gallery/ai/livingroom-stonelook-24x24.jpg"
+                alt="Modern living room with stone-look tile flooring"
                 fill
                 className="object-cover"
               />
