@@ -27,7 +27,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Large-format porcelain set with flawless straight-lay precision. Seamless pantry transition, 1/8\" color-matched grout.",
-    completedDate: "2025-01",
+    completedDate: "2025-03",
     prompt: "modern residential kitchen, open-plan, sleek white cabinetry, island with waterfall edge; floor: 24x48 matte porcelain tile, straight lay, tight 1/8\" grout lines color-matched; flawless transitions to pantry; perimeter expansion joints respected; soft north-facing daylight + under-cabinet LEDs; 24mm lens, eye-level, photoreal interior photography, ultra-detailed, no distortion"
   },
   {
@@ -43,7 +43,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "8x48 wood-look porcelain tile with random stagger for natural realism. Flush transition to dining area with minimal lippage.",
-    completedDate: "2025-01",
+    completedDate: "2025-06",
     prompt: "transitional residential kitchen with shaker cabinets and brass hardware; floor: 8x48 wood-look porcelain tile, random stagger, realistic wood grain, minimal lippage, flush transition to dining; color palette: warm oak + cream; morning light; 35mm lens; photoreal, interior photography"
   },
   {
@@ -59,7 +59,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "3x12 porcelain tile installed in herringbone with perfect chevron alignment at boundaries and schluter edge trim.",
-    completedDate: "2025-01",
+    completedDate: "2025-02",
     prompt: "compact galley kitchen in an apartment; floor: 3x12 porcelain tile in herringbone pattern, precise chevrons at boundaries, schluter edge trim at doorway, color-matched grout; bright daylight, overhead can lights; 28mm lens, photoreal"
   },
   {
@@ -75,7 +75,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Luxury master bath featuring mosaic marble hex shower floor and 12x24 porcelain main tile with perfect linear drain slope.",
-    completedDate: "2025-01",
+    completedDate: "2025-07",
     prompt: "spa-like master bathroom; shower: mosaic marble hex tile floor with even slopes to linear drain; main floor: 12x24 porcelain, 33% stagger; niche with mitered edges; seamless glass; warm LED; 24mm lens; photoreal"
   },
   {
@@ -91,7 +91,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Bold patterned 8x8 encaustic-look tile with centered layout and precise alignment at doorway threshold.",
-    completedDate: "2025-01",
+    completedDate: "2025-04",
     prompt: "powder room; floor: 8x8 encaustic-look ceramic tile, centered pattern, perfect aligns at doorway threshold; wall: half-height wainscot; natural daylight; 35mm lens; photoreal"
   },
   {
@@ -123,7 +123,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Stone-look porcelain with rectified edges, tight grout lines, and flush transition to carpeted hallway.",
-    completedDate: "2025-01",
+    completedDate: "2025-05",
     prompt: "contemporary living room; floor: 24x24 stone-look porcelain tile, rectified edges, tight grout lines; level plane, flush transition to carpeted hallway; golden hour side light; 24mm lens; photoreal, interior real-estate photography"
   },
   {
@@ -139,7 +139,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "5\" engineered hardwood in herringbone with border inlay. Crisp miters and flush transition details.",
-    completedDate: "2025-01",
+    completedDate: "2025-02",
     prompt: "residential entry hall; floor: 5\" engineered hardwood in herringbone with border inlay, precise miters at corners, flush schluter transition at tile threshold; soft daylight; 35mm lens; photoreal"
   },
   {
@@ -155,7 +155,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Durable 12mm laminate plank flooring with undercut door jambs and continuous flow into walk-in closet.",
-    completedDate: "2025-01",
+    completedDate: "2025-06",
     prompt: "cozy primary bedroom; floor: 12mm laminate plank, realistic bevels, undercut door jambs, continuous flow into walk-in closet; warm evening light; 35mm lens; photoreal"
   },
   {
@@ -171,7 +171,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Durable porcelain brick tile in running bond pattern. Easy-clean finish ideal for mudrooms and utility spaces.",
-    completedDate: "2025-01",
+    completedDate: "2025-03",
     prompt: "mudroom with built-ins; floor: porcelain brick tile running bond, tight grout, clean base transitions; durable, easy-clean vibe; overcast daylight; 28mm lens; photoreal"
   },
   {
@@ -187,7 +187,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Precise transition detail between carpeted stairs and luxury vinyl plank hallway using color-matched T-molding.",
-    completedDate: "2025-01",
+    completedDate: "2025-07",
     prompt: "stair landing; transition detail between carpeted stairs and LVP hallway using color-matched T-molding, precise cuts; overhead light; macro 70mm close-up + a wider establishing shot; photoreal"
   },
   {
@@ -203,7 +203,7 @@ export const portfolioItems: PortfolioItem[] = [
       }
     ],
     note: "Macro close-up highlighting flawless grout joints, schluter trim, and rectified edges with no lippage.",
-    completedDate: "2025-01",
+    completedDate: "2025-04",
     prompt: "macro close-up of porcelain tile corner showing perfect grout joints (1/8\"), schluter edge trim, no lippage, rectified edges, photoreal studio lighting"
   }
 ];

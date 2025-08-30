@@ -26,7 +26,7 @@ export default function Hero() {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <Link 
-            href="#estimate" 
+            href="/contact" 
             className="inline-flex items-center bg-white text-black px-8 py-4 text-lg font-medium hover:bg-gray-100 transition-all duration-300"
           >
             Get a Free Estimate
