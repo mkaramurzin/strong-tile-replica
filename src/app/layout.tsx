@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { businessConfig } from "../config/business";
 import Canonical from "../components/Canonical";
+import { Analytics } from "../components/Analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -85,6 +86,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );

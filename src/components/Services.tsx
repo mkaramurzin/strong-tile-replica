@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import { businessConfig } from '../config/business';
 
@@ -17,12 +16,6 @@ export default function Services() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20">
           {/* Text Content */}
           <div className="order-2 lg:order-1">
-            <Link 
-              href="/services/tile-installation" 
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium mb-6 transition-colors"
-            >
-              LEARN MORE →
-            </Link>
             <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               {businessConfig.content.servicesContent.tileInstallation.title}
             </h3>
@@ -67,15 +60,9 @@ export default function Services() {
             <p className="text-lg text-gray-600 mb-6 font-medium">
               {businessConfig.content.servicesContent.tileRepair.subtitle}
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-8">
+            <p className="text-gray-700 text-lg leading-relaxed">
               {businessConfig.content.servicesContent.tileRepair.description}
             </p>
-            <Link 
-              href="/services/tile-repair" 
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors"
-            >
-              LEARN MORE →
-            </Link>
           </div>
         </div>
 
@@ -89,15 +76,9 @@ export default function Services() {
             <p className="text-lg text-gray-600 mb-6 font-medium">
               {businessConfig.content.servicesContent.flooringInstallation.subtitle}
             </p>
-            <p className="text-gray-700 text-lg leading-relaxed mb-8">
+            <p className="text-gray-700 text-lg leading-relaxed">
               {businessConfig.content.servicesContent.flooringInstallation.description}
             </p>
-            <Link 
-              href="/services/flooring-installation" 
-              className="inline-flex items-center text-gray-600 hover:text-gray-900 font-medium transition-colors"
-            >
-              LEARN MORE →
-            </Link>
           </div>
           {/* Image */}
           <div>

@@ -1,29 +1,33 @@
+'use client';
+
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { businessConfig } from '../../config/business';
-import type { Metadata } from 'next';
+import { trackPhoneClick, trackEmailClick, trackFormSubmission } from '../../components/Analytics';
 
-export const metadata: Metadata = {
-  title: `Contact ${businessConfig.brand.name} - Free Flooring Estimates in ${businessConfig.location.fullLocation}`,
-  description: `Contact ${businessConfig.brand.name} for free tile installation and flooring estimates in ${businessConfig.location.fullLocation}. Call ${businessConfig.contact.phone.display} or fill out our form. Serving ${businessConfig.location.serviceAreas.join(", ")} with precision tile work and organized job sites.`,
-  keywords: [
-    'contact flooring contractor',
-    'free flooring estimate',
-    'tile installation quote',
-    businessConfig.location.city + ' tile contractor',
-    businessConfig.contact.phone.display,
-    'Vancouver flooring estimate',
-    'tile repair quote',
-    'flooring consultation'
-  ],
-  openGraph: {
-    title: `Contact ${businessConfig.brand.name} - Free Flooring Estimates in ${businessConfig.location.fullLocation}`,
-    description: `Get your free estimate today by contacting us directly or filling out our form below`,
-    url: 'https://vantatileflooring.com/contact',
-  },
-};
+
 
 export default function ContactPage() {
+  const handlePhoneClick = () => {
+    trackPhoneClick(businessConfig.contact.phone.display);
+  };
+
+  const handleEmailClick = (email: string) => {
+    trackEmailClick(email);
+  };
+
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const serviceType = formData.get('service') as string;
+    
+    trackFormSubmission('contact_form', serviceType);
+    
+    // Here you would typically send the form data to your backend
+    // For now, we'll just show an alert
+    alert('Thank you for your message! We will contact you soon.');
+  };
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -64,6 +68,7 @@ export default function ContactPage() {
                       <a 
                         href={`tel:${businessConfig.contact.phone.href}`} 
                         className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
+                        onClick={handlePhoneClick}
                       >
                         {businessConfig.contact.phone.display}
                       </a>
@@ -83,6 +88,7 @@ export default function ContactPage() {
                         <a 
                           href={`mailto:${businessConfig.contact.email.primary}`} 
                           className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
+                          onClick={() => handleEmailClick(businessConfig.contact.email.primary!)}
                         >
                           {businessConfig.contact.email.primary}
                         </a>
@@ -92,6 +98,7 @@ export default function ContactPage() {
                             <a 
                               href={`mailto:${businessConfig.contact.email.secondary}`} 
                               className="text-gray-700 hover:text-blue-600 text-lg transition-colors"
+                              onClick={() => handleEmailClick(businessConfig.contact.email.secondary!)}
                             >
                               {businessConfig.contact.email.secondary}
                             </a>
@@ -142,7 +149,7 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-8">Book Your Appointment</h2>
                 <p className="text-gray-700 mb-6">Get your free estimate today by simply filling out this form.</p>
                 
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleFormSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
@@ -312,7 +319,11 @@ export default function ContactPage() {
             <div className="text-center mt-8">
               <p className="text-gray-600">
                 For additional questions, you can call us at{' '}
-                <a href={`tel:${businessConfig.contact.phone.href}`} className="text-blue-600 hover:text-blue-800 font-medium">
+                <a 
+                  href={`tel:${businessConfig.contact.phone.href}`} 
+                  className="text-blue-600 hover:text-blue-800 font-medium"
+                  onClick={handlePhoneClick}
+                >
                   {businessConfig.contact.phone.display}
                 </a>{' '}
                 or check our reviews on Google.
